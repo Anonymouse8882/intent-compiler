@@ -1,0 +1,48 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local secrets and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+id_rsa*
+id_ed25519*
+credentials*
+secrets*
+
+# Local data, diagnostics, and generated Intent IR
+*.log
+*.bak
+*.backup
+*.dump
+*.sqlite
+*.sqlite3
+*.db
+*.intent-ir.json
+!plugins/intent-compiler/skills/compile-intent/references/example.intent-ir.json
+.intent-compiler-installed*
+
+# User- and machine-specific editor state
+.vscode/
+.idea/
+.vs/
+*.user
+
+# OS and packaging metadata
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
+*.zip
+*.7z
+*.tar
+*.tgz
+dist/

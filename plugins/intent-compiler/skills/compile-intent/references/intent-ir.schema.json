@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.codex/intent-compiler/intent-ir.schema.json",
+  "title": "Intent IR",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "status", "observed_request", "goal", "decomposition", "hypotheses", "evidence", "constraints", "assumptions", "success_criteria", "affected_surface", "execution_gate", "verification_plan"],
+  "properties": {
+    "version": { "const": "1.0" },
+    "status": { "enum": ["READY", "READY_WITH_ASSUMPTIONS", "NEEDS_CLARIFICATION", "BLOCKED_BY_EVIDENCE"] },
+    "observed_request": { "type": "string", "minLength": 1, "description": "Privacy-safe paraphrase, or verbatim text only after confirming that it contains no secrets, personal data, or identifying metadata." },
+    "goal": { "type": "string", "minLength": 1 },
+    "decomposition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["problem", "cause_hypothesis", "requested_action"],
+      "properties": {
+        "problem": { "type": ["string", "null"] },
+        "cause_hypothesis": { "type": ["string", "null"] },
+        "requested_action": { "type": ["string", "null"] }
+      }
+    },
+    "hypotheses": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "interpretation", "probability", "evidence_for", "evidence_against"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^H[1-9][0-9]*$" },
+          "interpretation": { "type": "string", "minLength": 1 },
+          "probability": { "type": "number", "minimum": 0, "maximum": 1 },
+          "evidence_for": { "type": "array", "items": { "type": "string" } },
+          "evidence_against": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "evidence": { "type": "array", "description": "Sanitized facts, aggregate measurements, and repository-relative source locations only.", "items": { "type": "string" } },
+    "constraints": { "type": "array", "items": { "type": "string" } },
+    "non_goals": { "type": "array", "items": { "type": "string" }, "default": [] },
+    "assumptions": { "type": "array", "items": { "type": "string" } },
+    "conflicts": { "type": "array", "items": { "type": "string" }, "default": [] },
+    "success_criteria": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+    "affected_surface": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["confirmed", "estimated_file_count", "data_migration"],
+      "properties": {
+        "confirmed": { "type": "array", "items": { "type": "string" } },
+        "estimated_file_count": {
+          "type": ["object", "null"],
+          "properties": { "min": { "type": "integer", "minimum": 0 }, "max": { "type": "integer", "minimum": 0 }, "basis": { "type": "string" } },
+          "required": ["min", "max", "basis"],
+          "additionalProperties": false
+        },
+        "data_migration": { "enum": ["none", "possible", "required"] }
+      }
+    },
+    "decision_factors": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "impact_divergence": { "enum": ["low", "medium", "high"] },
+        "reversibility": { "enum": ["easy", "moderate", "hard"] },
+        "risk": { "enum": ["low", "medium", "high"] },
+        "evidence_conflict": { "type": "boolean" }
+      }
+    },
+    "execution_gate": { "type": "string", "minLength": 1 },
+    "clarifying_question": { "type": ["string", "null"] },
+    "verification_plan": { "type": "array", "minItems": 1, "items": { "type": "string" } }
+  }
+}

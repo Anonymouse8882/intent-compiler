@@ -1,0 +1,4 @@
+interface:
+  display_name: "Compile Intent"
+  short_description: "Turn vague requests into verifiable intent"
+  default_prompt: "Use $compile-intent to turn this request into an evidence-backed Intent IR before implementation."

@@ -1,0 +1,32 @@
+{
+  "name": "intent-compiler",
+  "version": "1.0.0",
+  "description": "Compile ambiguous human requests into evidence-backed, verifiable Intent IR before planning and implementation.",
+  "author": {
+    "name": "Intent Compiler Contributors"
+  },
+  "keywords": [
+    "intent",
+    "requirements",
+    "planning",
+    "impact-analysis",
+    "verification"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Intent Compiler",
+    "shortDescription": "Turn vague requests into verifiable goals.",
+    "longDescription": "Intent Compiler treats natural language as evidence rather than an executable instruction. It expands competing interpretations, grounds them in repository reality, separates problems from cause hypotheses and requested actions, decides when clarification is necessary, and emits an Intent IR with success criteria, affected surfaces, and a closed-loop verification plan.",
+    "developerName": "Intent Compiler Contributors",
+    "category": "Productivity",
+    "capabilities": [
+      "Analysis",
+      "Planning"
+    ],
+    "defaultPrompt": [
+      "Compile this vague request into an evidence-backed Intent IR.",
+      "Estimate the real affected surface before changing code.",
+      "Check whether the requested fix addresses the measured problem."
+    ]
+  }
+}

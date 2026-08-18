@@ -1,0 +1,22 @@
+{
+  "name": "intent-compiler-plugins",
+  "owner": {
+    "name": "Intent Compiler Contributors"
+  },
+  "description": "Cross-agent Intent Compiler plugins for resolving ambiguous requirements.",
+  "plugins": [
+    {
+      "name": "intent-compiler",
+      "displayName": "Intent Compiler",
+      "source": "./plugins/intent-compiler",
+      "description": "Compile vague requests into evidence-backed Intent IR before implementation.",
+      "category": "productivity",
+      "tags": [
+        "requirements",
+        "planning",
+        "intent"
+      ],
+      "defaultEnabled": true
+    }
+  ]
+}

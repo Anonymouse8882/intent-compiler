@@ -1,0 +1,18 @@
+{
+  "name": "intent-compiler",
+  "displayName": "Intent Compiler",
+  "version": "1.0.0",
+  "description": "Compile ambiguous human requests into evidence-backed, verifiable Intent IR before planning and implementation.",
+  "author": {
+    "name": "Intent Compiler Contributors"
+  },
+  "keywords": [
+    "intent",
+    "requirements",
+    "planning",
+    "impact-analysis",
+    "verification"
+  ],
+  "skills": "./skills/",
+  "defaultEnabled": true
+}

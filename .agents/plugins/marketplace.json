@@ -1,0 +1,20 @@
+{
+  "name": "intent-compiler-local",
+  "interface": {
+    "displayName": "Intent Compiler Local"
+  },
+  "plugins": [
+    {
+      "name": "intent-compiler",
+      "source": {
+        "source": "local",
+        "path": "./plugins/intent-compiler"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
